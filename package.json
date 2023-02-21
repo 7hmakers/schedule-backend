@@ -1,0 +1,67 @@
+{
+  "name": "schedule-backend",
+  "version": "0.0.0",
+  "packageManager": "pnpm@7.26.3",
+  "author": "Ray <i@mk1.io> (@so1ve)",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/7hmakers/schedule-backend#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/7hmakers/schedule-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/7hmakers/schedule-backend/issues"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "rimraf dist && puild --minify",
+    "watch": "puild --watch",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepublishOnly": "nr build",
+    "release": "bumpp --commit --push --tag && pnpm publish",
+    "start": "tsx src/index.ts",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@antfu/ni": "^0.18.8",
+    "@babel/types": "^7.20.7",
+    "@so1ve/eslint-config": "^0.40.1",
+    "@types/node": "^18.11.18",
+    "bumpp": "^8.2.1",
+    "eslint": "^8.31.0",
+    "h3": "^1.4.0",
+    "pnpm": "^7.24.3",
+    "puild": "^1.3.2",
+    "rimraf": "^3.0.2",
+    "tsx": "^3.12.2",
+    "typescript": "^4.9.4"
+  }
+}
